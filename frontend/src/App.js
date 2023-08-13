@@ -1,10 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import logo from '../public/logo.png';
 import NavigationBar from './components/NavigationBar';
-import ContentArea from './components/ContentArea';
 import Footer from './components/Footer';
+import Home from './components/Home';
 
 const App = () => {
   return (
@@ -14,10 +13,11 @@ const App = () => {
 
           <div className="container">
             <NavigationBar />
-            <ContentArea />
-            <Footer />
+            <Home/>
+            {/* <Footer /> */}
           </div>
         </div>
+
       </div>
     </Router>
   );

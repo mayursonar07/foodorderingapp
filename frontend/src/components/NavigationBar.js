@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../public/logo2_black.png'
+import logo from '../../public/foodville.png'
 import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
@@ -13,17 +13,6 @@ const NavigationBar = () => {
               
               <li className="nav-list-item">
                 <Link to="/courses" className='nav-Link-item'>Courses</Link>
-                {/* <ul>
-                  <li>
-                    <Link to="/courses/basic-javascript">Basic Javascript</Link>
-                  </li>
-                  <li>
-                    <Link to="/courses/advanced-js">Advanced Js</Link>
-                  </li>
-                  <li>
-                    <Link to="/courses/react">React</Link>
-                  </li>
-                </ul> */}
               </li>
               <li>
                 <Link to="/contact" className='nav-Link-item'>Enquiry</Link>
