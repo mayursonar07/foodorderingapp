@@ -4,17 +4,20 @@ import './App.css';
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import RestaurantDetails from './components/RestaurantDetails';
 
 const App = () => {
   return (
     <Router>
       <div className="App">
         <div>
-
           <div className="container">
             <NavigationBar />
-            <Home/>
-            {/* <Footer /> */}
+            {/* <Home/>           */}
+            <Routes>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/card/:id' element={<RestaurantDetails/>}/>
+            </Routes>
           </div>
         </div>
 

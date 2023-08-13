@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 const NavigationBar = () => {
     return (
         <nav className='main-nav'>
-          <div className='logo'>
-            <img src={logo} style={{width: '210px'}}/>
-          </div> 
+          <Link to="/"> {/* To take us back to homepage */}
+            <div className='logo'>
+              <img src={logo} style={{width: '210px'}}/>
+            </div> 
+          </Link>
           <div className='menu-link'>   
             <ul>
               
