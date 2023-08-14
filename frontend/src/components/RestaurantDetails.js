@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react'
 import * as Constants from '../constants/index'
+import { useLocation } from 'react-router-dom';
 
-const RestaurantDetails = (info) => {
-    console.log("Restaurant details: ", info);
+const RestaurantDetails = (props) => {
+    const location = useLocation();
+    //const { location } = props;
+    const info = location.state;
+
     useEffect(()=>{
 
         const fetchRestaurantMenu = async () => {

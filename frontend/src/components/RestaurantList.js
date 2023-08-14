@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import RestaurantCard from './RestaurantCard';
 import { Link } from 'react-router-dom';
 
@@ -7,9 +7,9 @@ const RestaurantList = ({restaurantList}) => {
     // Create a list of RestaurantCards
     const renderListOfRestaurantCards = restaurantList.map((restaurant) => {
         return (
-            <Link to='/card/2'>
-                <RestaurantCard info={restaurant.info} />
-            </Link>
+            
+                <RestaurantCard key={restaurant.info.id} info={restaurant.info} />
+            
         )
     })
   return (
