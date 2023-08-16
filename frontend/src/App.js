@@ -11,6 +11,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import '@fontsource/raleway/400.css'
 import '@fontsource/open-sans/700.css'
 import theme from './theme';
+import SearchComp from './components/SearchComp';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
               {/* <Home/>           */}
               <Routes>
                 <Route path='/' element={<Home/>}/>
+                <Route path='/search' element={<SearchComp/>}/>
                 <Route path='/card/:id' element={<RestaurantDetails/>}/>
               </Routes>
             </div>
