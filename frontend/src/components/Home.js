@@ -2,20 +2,13 @@ import React, { useEffect, useState } from 'react'
 import AddressInput from './AddressInput'
 import * as Constants from '../constants/index'
 import RestaurantList from './RestaurantList';
+import { Box, CircularProgress, Text, Wrap } from '@chakra-ui/react';
 
 const Home = () => {
   const [isState, setMyState] = useState(false);
   const [isLocationSet, setlocation] = useState(false);
   const [appData, setAppData] = useState('');
   
-  useEffect(()=>{
-    const location = localStorage.getItem('location');
-    if (location && !appData) {
-      fetchDataForLocation();
-      //setMyState(true);
-    }
-  }, [isLocationSet])
-
   const fetchDataForLocation = () => {
     console.log("fetch data for location")
     const response = fetch (Constants.SWIGGY_MAIN_API)
@@ -29,6 +22,14 @@ const Home = () => {
             //console.log(mainAPIResponse);
         })
   }
+
+  useEffect(()=>{
+    const location = localStorage.getItem('location');
+    if (location && !appData) {
+      fetchDataForLocation();
+      //setMyState(true);
+    }
+  }, [isLocationSet])
 
   const getHomePageData = (lat, lng) => {
 
@@ -45,8 +46,12 @@ const Home = () => {
   if (isState) {
     return (
       <>
+      <Text fontSize='3xl' fontWeight='bold'>{appData.data.cards[3].card.card.title}</Text>
+      
       {/* Restaurant data received */}
-      <RestaurantList restaurantList={appData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants}/>
+      <Wrap spacing='10px'>
+        <RestaurantList restaurantList={appData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants}/>
+      </Wrap>
       </>
     )
   }
@@ -60,7 +65,7 @@ const Home = () => {
   }
   return (
     <>
-    Loading....
+    <CircularProgress isIndeterminate  />
     </>
   )
 }
