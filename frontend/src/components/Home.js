@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AddressInput from './AddressInput'
 import * as Constants from '../constants/index'
 import RestaurantList from './RestaurantList';
-import { Box, CircularProgress, Text, Wrap } from '@chakra-ui/react';
+import { Box, CircularProgress, Divider, Text, Wrap } from '@chakra-ui/react';
 
 const Home = () => {
   const [isState, setMyState] = useState(false);
@@ -46,10 +46,10 @@ const Home = () => {
   if (isState) {
     return (
       <>
-      <Text fontSize='3xl' fontWeight='bold'>{appData.data.cards[3].card.card.title}</Text>
-      
+      <Text fontSize='2xl' fontWeight='bold' mt='20px' p='20px'>{appData.data.cards[3].card.card.title}</Text>
+      <Divider/>
       {/* Restaurant data received */}
-      <Wrap spacing='10px'>
+      <Wrap spacing='25px'>
         <RestaurantList restaurantList={appData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants}/>
       </Wrap>
       </>

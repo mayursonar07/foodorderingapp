@@ -8,9 +8,13 @@ import RestaurantDetails from './components/RestaurantDetails';
 // 1. import `ChakraProvider` component
 import { ChakraProvider } from '@chakra-ui/react'
 
+import '@fontsource/raleway/400.css'
+import '@fontsource/open-sans/700.css'
+import theme from './theme';
+
 const App = () => {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Router>
         <div className="App">
           <div>
