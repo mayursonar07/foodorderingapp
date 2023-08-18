@@ -5,3 +5,5 @@ export const CLOUDINARY_IMAGE = "https://media-assets.swiggy.com/swiggy/image/up
 export const RESTAURANT_DETAIL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.591498&lng=73.732947&restaurantId=";
 
 export const RESTAURANT_SEARCH_AUTOCOMPLETE = "https://www.swiggy.com/dapi/restaurants/search/suggest?lat=18.59937&lng=73.900618&str=";
+
+export const PRE_SEARCH_API = "https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=18.59937&lng=73.900618";
