@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import * as Constants from '../constants/index'
 import { useLocation } from 'react-router-dom';
-import { Box, CircularProgress } from '@chakra-ui/react';
+import { Box, Center, CircularProgress, Text } from '@chakra-ui/react';
+import MenuList from './MenuList';
 
 const RestaurantDetails = (props) => {
     const location = useLocation();
@@ -27,13 +28,20 @@ const RestaurantDetails = (props) => {
         // Create a list of cuisines
         const cuisines = restaurantMenuData.cards[0].card.card.info.cuisines;
         const area = restaurantMenuData.cards[0].card.card.info.areaName;
+
+        // Menu list
+        const menuList = restaurantMenuData.cards[2].groupedCard.cardGroupMap.REGULAR.cards;
+        // Now we build menu list component
         return (
             <>
             <Box>
+                <Box ml='13.7%' mt='25px' mb='30px'>
 
-                <h2>{restaurantName}</h2>
-                <p>CUISINES: {cuisines.join(",")}</p>
-                <p>{area}</p>
+                    <Text fontWeight='bold' fontSize='4xl'>{restaurantName}</Text>
+                    <Text color='gray'>CUISINES: {cuisines.join(",")}</Text>
+                    <Text color='gray'>{area}</Text>
+                </Box>
+                <MenuList list={menuList[1].card.card}/>
             </Box>
             </>
         )
