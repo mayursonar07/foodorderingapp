@@ -68,7 +68,7 @@ const SearchComp = () => {
         const imgURL = (Constants.CLOUDINARY_IMAGE + el.imageId);
         const itemName = el.entityId.substring(23);
         return (
-            <Box mt='15px' background='#f3f3f4'>                
+            <Box mt='25px' background='#f3f3f4'>                
                 <Image src={imgURL}/>
             </Box>
         )
@@ -84,7 +84,7 @@ const SearchComp = () => {
                 placeholder='Search for restaurants and food'
                 size='sm'
                 maxWidth='400px'
-                mt='20px'
+                mt='30px'
             />
             
         </Center>
@@ -99,7 +99,7 @@ const SearchComp = () => {
             ? 
             <Center flexDirection='column'>                
                 <Text fontWeight='bold' fontSize='2xl' mt='50px'>Popular Cuisines</Text>                
-                <Center>
+                <Center width='70%'>
                     {preSearchResultsList}
                 </Center>
             </Center>

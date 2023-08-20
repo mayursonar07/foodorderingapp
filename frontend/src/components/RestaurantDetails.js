@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import * as Constants from '../constants/index'
 import { useLocation } from 'react-router-dom';
-import { Box, Center, CircularProgress, Text } from '@chakra-ui/react';
+import { AbsoluteCenter, Box, Center, CircularProgress, Text } from '@chakra-ui/react';
 import MenuList from './MenuList';
 
 const RestaurantDetails = (props) => {
@@ -41,15 +41,17 @@ const RestaurantDetails = (props) => {
                     <Text color='gray'>CUISINES: {cuisines.join(",")}</Text>
                     <Text color='gray'>{area}</Text>
                 </Box>
-                <MenuList list={menuList[1].card.card}/>
+                <MenuList list={menuList[1].card.card} restaurantId={info.id}/>
             </Box>
             </>
         )
     } else {
         return (
             <>
-            Fetching Restaurant details...
-            <CircularProgress isIndeterminate  />
+            <AbsoluteCenter>
+                Fetching Restaurant details...
+                <CircularProgress isIndeterminate  />
+            </AbsoluteCenter>
             </>
         )
     }

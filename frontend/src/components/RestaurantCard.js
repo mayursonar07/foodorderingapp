@@ -15,8 +15,8 @@ const RestaurantCard = ({info}) => {
             <Image borderRadius='15px' src={imgURL}/>
             <Text fontSize='16' fontWeight='bold' ml='15px' mt='5px'>{info.name}</Text>
             <Text fontSize='13' fontWeight='bold' ml='15px'>✰ {info.avgRating}</Text>
-            <Text overflowWrap='break-word' fontSize='13' ml='15px' color='gray'>{cuisines.join(",")}</Text>
-            <Text overflowWrap='break-word' fontSize='13' ml='15px' color='gray'>{area}</Text>
+            <Text width='200px' fontSize='13' ml='15px' color='gray'>{cuisines.join(",")}</Text>
+            <Text fontWeight='bold' fontSize='13' ml='15px' color='gray'>{area}</Text>
             
         </Link>
     </Center>

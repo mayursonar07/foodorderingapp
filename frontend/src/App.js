@@ -12,6 +12,7 @@ import '@fontsource/raleway/400.css'
 import '@fontsource/open-sans/700.css'
 import theme from './theme';
 import SearchComp from './components/SearchComp';
+import Cart from './components/Cart';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
               <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='/search' element={<SearchComp/>}/>
+                <Route path='/cart' element={<Cart/>}/>
                 <Route path='/card/:id' element={<RestaurantDetails/>}/>
               </Routes>
             </div>

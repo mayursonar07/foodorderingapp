@@ -106,3 +106,10 @@ button {
 .address-input {
     width: 200px;
 }
+
+.sample {
+    border: none;
+    float: right;
+    align-items: center;
+    margin-top: 20px;
+}
