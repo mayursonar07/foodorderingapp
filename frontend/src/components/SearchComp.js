@@ -1,12 +1,14 @@
 import { Box, Center, Image, Input, Text } from '@chakra-ui/react'
 import * as Constants from '../constants/index'
 import React, { useEffect, useState } from 'react'
+import ErrorComponent from './ErrorComponent';
 
 const SearchComp = () => {
 
   const [value, setValue] = useState('');
   const [searchResults, setSearchResults] = useState('');
   const [preSearchResults, setPreSearchResults] = useState('');
+  const [error, setError] = useState(false);
 
   const handleSearchInputChange = (event) => {
     setValue(event.target.value);
@@ -15,13 +17,17 @@ const SearchComp = () => {
   // fetch the Popular Cuisines data, from Pre-SEARCH api
   useEffect(()=> {
     const fetchPreSearchInfo = async () => {
-        const response = await fetch(Constants.PRE_SEARCH_API)
-        const data = await response.json();
-        //console.log(data);
-        if(data.statusCode == 0)  {
-            console.log(data)
-            setPreSearchResults(data.data.cards[1].card.card); // This is an object
-        } else setSearchResults([]);
+        try {
+            const response = await fetch(Constants.PRE_SEARCH_API)
+            const data = await response.json();
+            //console.log(data);
+            if(data.statusCode == 0)  {
+                console.log(data)
+                setPreSearchResults(data.data.cards[1].card.card); // This is an object
+            } else setSearchResults([]);
+        } catch {
+            setError(true);
+        }
 
     }
     fetchPreSearchInfo();
@@ -30,14 +36,17 @@ const SearchComp = () => {
   // Once the value is set, we should then call the webservice API 
   useEffect(()=> {
     const fetchSearchInfo = async () => {
-
-        const response = await fetch(Constants.RESTAURANT_SEARCH_AUTOCOMPLETE+value)
-        const data = await response.json();
-        //console.log(data);
-        if(data.statusCode == 0)  {
-            console.log(data)
-            setSearchResults(data.data.suggestions);
-        } else setSearchResults([]);
+        try {
+            const response = await fetch(Constants.RESTAURANT_SEARCH_AUTOCOMPLETE+value)
+            const data = await response.json();
+            //console.log(data);
+            if(data.statusCode == 0)  {
+                console.log(data)
+                setSearchResults(data.data.suggestions);
+            } else setSearchResults([]);
+        } catch {
+            setError(true);
+        }
 
     }
     fetchSearchInfo();
@@ -73,6 +82,12 @@ const SearchComp = () => {
             </Box>
         )
     })
+  }
+
+  if(error) {
+    return(
+      <ErrorComponent/>
+    )
   }
 
   return (

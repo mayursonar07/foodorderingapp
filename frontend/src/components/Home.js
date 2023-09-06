@@ -3,26 +3,32 @@ import AddressInput from './AddressInput'
 import * as Constants from '../constants/index'
 import RestaurantList from './RestaurantList';
 import { AbsoluteCenter, Box, CircularProgress, Divider, Text, Wrap } from '@chakra-ui/react';
+import ErrorComponent from './ErrorComponent';
 
 const Home = () => {
   const [isState, setMyState] = useState(false);
   const [isLocationSet, setlocation] = useState(false);
   const [appData, setAppData] = useState('');
+  const [error, setError] = useState(false);
   
   const fetchDataForLocation = async () => {
-    console.log("fetch data for location")
-    const response = await fetch (Constants.SWIGGY_MAIN_API)
-    if (response.status == 200) {
-      const data = await response.json();
-      console.log(data);
-      setAppData(data);
-      setMyState(true);
-    } else {
-      const response = await fetch (Constants.SWIGGY_MOBILE_API)
-      const data = await response.json();
-      console.log(data);
-      setAppData(data);
-      setMyState(true);
+    console.log("fetch data for location");
+    try {
+      const response = await fetch (Constants.SWIGGY_MAIN_API)
+      if (response.status == 200) {
+        const data = await response.json();
+        console.log(data);
+        setAppData(data);
+        setMyState(true);
+      } else {
+        const response = await fetch (Constants.SWIGGY_MOBILE_API)
+        const data = await response.json();
+        console.log(data);
+        setAppData(data);
+        setMyState(true);
+      }
+    } catch {
+      setError(true);
     }
     // const response = fetch (Constants.SWIGGY_MAIN_API)
     //     .then((response)=>{
@@ -79,6 +85,11 @@ const Home = () => {
       <AddressInput onLocationUpdate={getHomePageData}/>
       </>
 
+    )
+  }
+  if(error) {
+    return(
+      <ErrorComponent/>
     )
   }
   return (
